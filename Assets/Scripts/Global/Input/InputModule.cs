@@ -9,27 +9,26 @@ namespace RougeLike.PlayerInput
 	{
 		[SerializeField] private InputData _inputData;
 
-		public override void AddOneFrameToSystem(EcsSystems updateSystem, EcsSystems fixedUpdateSystem)
+		public override void AddOneFrameToSystem(EcsSystems system)
 		{
-			updateSystem.OneFrame<ButtonsPressedEvent>()
-			            .OneFrame<PointerUpEvent>()
-			            .OneFrame<PointerDownEvent>()
-			            .OneFrame<OverUIEvent>()
-			            .OneFrame<DragEvent>()
-			            .OneFrame<ScrollEvent>();
+			system.OneFrame<ButtonsPressedEvent>()
+			      .OneFrame<PointerUpEvent>()
+			      .OneFrame<PointerDownEvent>()
+			      .OneFrame<OverUIEvent>()
+			      .OneFrame<DragEvent>()
+			      .OneFrame<ScrollEvent>();
 		}
 
-		public override void InjectData(EcsSystems updateSystem, EcsSystems fixedUpdateSystem)
+		public override void InjectData(EcsSystems system)
 		{
-			updateSystem.Inject(_inputData);
-			fixedUpdateSystem.Inject(_inputData);
+			system.Inject(_inputData);
 		}
 
-		public override void AddSystem(EcsSystems updateSystem, EcsSystems fixedUpdateSystem)
+		public override void AddSystem(EcsSystems system)
 		{
 #if UNITY_EDITOR
-			if(_inputData.Type == InputData.InputType.Standalone) AddStandaloneInputSystem(updateSystem);
-			else if(_inputData.Type == InputData.InputType.Mobile) AddMobileInputSystem(updateSystem);
+			if(_inputData.Type == InputData.InputType.Standalone) AddStandaloneInputSystem(system);
+			else if(_inputData.Type == InputData.InputType.Mobile) AddMobileInputSystem(system);
 #elif UNITY_STANDALONE
 			AddStandaloneInputSystem(system);
 #elif UNITY_ANDROID || UNITY_IOS
@@ -38,23 +37,24 @@ namespace RougeLike.PlayerInput
 		}
 
 #if UNITY_EDITOR || UNITY_ANDROID || UNITY_IOS
-		private static void AddMobileInputSystem(EcsSystems updateSystem)
+		private static void AddMobileInputSystem(EcsSystems system)
 		{
-			updateSystem.Add(new MobileInputSystem())
-			            .Add(new MobileFingerPositionSystem());
+			system.Add(new MobileInputSystem())
+			      .Add(new MobileFingerPositionSystem());
 		}
 #endif
 
 #if UNITY_EDITOR || UNITY_STANDALONE
-		private static void AddStandaloneInputSystem(EcsSystems updateSystem)
+		private static void AddStandaloneInputSystem(EcsSystems system)
 		{
-			updateSystem.Add(new StandaloneInputSystem())
-			            .Add(new StandalonePointerPositionSystem())
-			            .Add(new StandaloneDragSystem())
-			            .Add(new StandaloneScrollSystem());
+			system.Add(new StandaloneInputSystem())
+			      .Add(new StandaloneMovementSystem())
+			      .Add(new StandalonePointerPositionSystem())
+			      .Add(new StandaloneDragSystem())
+			      .Add(new StandaloneScrollSystem());
 		}
 #endif
 
-		public override void AddPrioritySystem(EcsSystems updateSystem, EcsSystems fixedUpdateSystem) { }
+		public override void AddPrioritySystem(EcsSystems updateSystem) { }
 	}
 }

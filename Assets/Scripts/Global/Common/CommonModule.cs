@@ -2,33 +2,35 @@
 
 namespace RougeLike
 {
-	public class CommonModule : IEcsSystemModule
+	public struct CommonModule : IEcsSystemModule
 	{
-		public void AddSystem(EcsSystems updateSystem, EcsSystems fixedUpdateSystem)
+		public void AddPrioritySystem(EcsSystems system)
 		{
-			updateSystem.Add(new ApplyTransformSystem())
-			            .Add(new CooldownSystem())
-			            .Add(new ActionTimerSystem());
+			system.Add(new MoveToTargetSystem())
+			      .Add(new RotateToTargetSystem())
+			      .Add(new TakeDamageSystem());
 		}
 
-		public void AddOneFrameToSystem(EcsSystems updateSystem, EcsSystems fixedUpdateSystem)
+		public void AddSystem(EcsSystems system)
 		{
-			updateSystem.OneFrame<ClickEvent>()
-			            .OneFrame<SpawnEvent>()
-			            .OneFrame<ChangeTransformEvent>()
-			            .OneFrame<ChangeStateEvent>()
-			            .OneFrame<EndMoveEvent>()
-			            .OneFrame<DamageEvent>()
-			            .OneFrame<DestroyedEvent>();
+			system.Add(new ApplyTransformSystem())
+			      .Add(new ApplyLocalTransformSystem())
+			      .Add(new CooldownSystem())
+			      .Add(new ActionTimerSystem());
 		}
 
-		public void AddPrioritySystem(EcsSystems updateSystem, EcsSystems fixedUpdateSystem)
+		public void AddOneFrameToSystem(EcsSystems system)
 		{
-			updateSystem.Add(new MoveToTargetSystem())
-			            .Add(new RotateToTargetSystem())
-			            .Add(new TakeDamageSystem());
+			system.OneFrame<ClickEvent>()
+			      .OneFrame<SpawnEvent>()
+			      .OneFrame<ChangeTransformEvent>()
+			      .OneFrame<ChangeLocalTransformEvent>()
+			      .OneFrame<ChangeStateEvent>()
+			      .OneFrame<EndMoveEvent>()
+			      .OneFrame<DamageEvent>()
+			      .OneFrame<DestroyedEvent>();
 		}
 
-		public void InjectData(EcsSystems system, EcsSystems fixedUpdateSystem) { }
+		public void InjectData(EcsSystems system) { }
 	}
 }

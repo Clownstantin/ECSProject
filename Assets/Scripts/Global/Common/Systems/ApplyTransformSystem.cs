@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RougeLike
 {
-	public class ApplyTransformSystem : IEcsRunSystem
+	public sealed class ApplyTransformSystem : IEcsRunSystem
 	{
 		private EcsFilter<EntityTransform, ComponentLink<Transform>, ChangeTransformEvent> _filter = default;
 

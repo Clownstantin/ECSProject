@@ -7,10 +7,6 @@ namespace RougeLike.UI
 	{
 		[SerializeField] private T _UIData = default;
 
-		public override void InjectData(EcsSystems updateSystem, EcsSystems fixedUpdateSystem)
-		{
-			updateSystem.Inject(_UIData);
-			fixedUpdateSystem.Inject(_UIData);
-		}
+		public override void InjectData(EcsSystems system) => system.Inject(_UIData);
 	}
 }

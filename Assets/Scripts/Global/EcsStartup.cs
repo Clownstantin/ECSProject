@@ -12,8 +12,7 @@ namespace RougeLike
 
 		private Game _game;
 		private EcsWorld _world;
-		private EcsSystems _updateSystems;
-		private EcsSystems _fixedUpdateSystems;
+		private EcsSystems _systems;
 		private IEcsSystemModule[] _modules;
 
 		private void Start()
@@ -23,16 +22,12 @@ namespace RougeLike
 			InitSystems();
 		}
 
-		private void Update() => _updateSystems?.Run();
-
-		private void FixedUpdate() => _fixedUpdateSystems?.Run();
+		private void Update() => _systems?.Run();
 
 		private void OnDestroy()
 		{
-			_updateSystems?.Destroy();
-			_updateSystems = null;
-			_fixedUpdateSystems?.Destroy();
-			_fixedUpdateSystems = null;
+			_systems?.Destroy();
+			_systems = null;
 			_world?.Destroy();
 			_world = null;
 		}
@@ -40,13 +35,12 @@ namespace RougeLike
 		private void InitWorld()
 		{
 			_world = new EcsWorld();
-			_updateSystems = new EcsSystems(_world);
-			_fixedUpdateSystems = new EcsSystems(_world);
+			_systems = new EcsSystems(_world);
 
 			_game = FindObjectOfType<Game>();
 #if UNITY_EDITOR
 			EcsWorldObserver.Create(_world);
-			EcsSystemsObserver.Create(_updateSystems);
+			EcsSystemsObserver.Create(_systems);
 #endif
 		}
 
@@ -63,28 +57,26 @@ namespace RougeLike
 
 		private void InitSystems()
 		{
-			_updateSystems.Inject(_configs);
-			_fixedUpdateSystems.Inject(_configs);
-
-			if(_game)
-			{
-				_updateSystems.Inject(_game);
-				_fixedUpdateSystems.Inject(_game);
-			}
+			InjectData();
 
 			foreach(IEcsSystemModule module in _modules)
 			{
-				module.InjectData(_updateSystems, _fixedUpdateSystems);
-				module.AddPrioritySystem(_updateSystems, _fixedUpdateSystems);
-				module.AddSystem(_updateSystems, _fixedUpdateSystems);
-				module.AddOneFrameToSystem(_updateSystems, _fixedUpdateSystems);
+				module.InjectData(_systems);
+				module.AddPrioritySystem(_systems);
+				module.AddSystem(_systems);
+				module.AddOneFrameToSystem(_systems);
 			}
 
-			_updateSystems.Init();
-			_fixedUpdateSystems.Init();
+			_systems.Init();
 
 			_game.InitEntity(_world);
 			_modules = null;
+		}
+
+		private void InjectData()
+		{
+			_systems.Inject(_configs);
+			if(_game) _systems.Inject(_game);
 		}
 	}
 }
