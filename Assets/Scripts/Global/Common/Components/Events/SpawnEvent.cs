@@ -1,4 +1,6 @@
-﻿namespace RougeLike
+﻿using Leopotam.Ecs;
+
+namespace RougeLike
 {
-	public readonly struct SpawnEvent { }
+	public readonly struct SpawnEvent : IEcsIgnoreInFilter { }
 }

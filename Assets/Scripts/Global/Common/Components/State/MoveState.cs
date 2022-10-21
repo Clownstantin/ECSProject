@@ -1,4 +1,6 @@
-﻿namespace RougeLike
+﻿using Leopotam.Ecs;
+
+namespace RougeLike
 {
-	internal readonly struct MoveState { }
+	internal readonly struct MoveState : IEcsIgnoreInFilter { }
 }

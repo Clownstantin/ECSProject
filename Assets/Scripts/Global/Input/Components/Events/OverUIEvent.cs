@@ -1,4 +1,6 @@
-﻿namespace RougeLike.PlayerInput
+﻿using Leopotam.Ecs;
+
+namespace RougeLike.PlayerInput
 {
-	internal readonly struct OverUIEvent { }
+	internal readonly struct OverUIEvent : IEcsIgnoreInFilter { }
 }

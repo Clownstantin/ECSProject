@@ -19,6 +19,8 @@ namespace RougeLike
 			      .Add(new ActionTimerSystem());
 		}
 
+		public void AddFixedUpdateSystem(EcsSystems system) { }
+
 		public void AddOneFrameToSystem(EcsSystems system)
 		{
 			system.OneFrame<ClickEvent>()

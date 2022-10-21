@@ -1,4 +1,6 @@
-﻿namespace RougeLike
+﻿using Leopotam.Ecs;
+
+namespace RougeLike
 {
-	public struct ChangeLocalTransformEvent { }
+	public readonly struct ChangeLocalTransformEvent : IEcsIgnoreInFilter { }
 }

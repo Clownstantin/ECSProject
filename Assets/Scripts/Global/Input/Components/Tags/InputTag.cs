@@ -1,4 +1,6 @@
-﻿namespace RougeLike.PlayerInput
+﻿using Leopotam.Ecs;
+
+namespace RougeLike.PlayerInput
 {
-	public readonly struct InputTag { }
+	public readonly struct InputTag : IEcsIgnoreInFilter { }
 }

@@ -1,4 +1,6 @@
-﻿namespace RougeLike.PlayerModule
+﻿using Leopotam.Ecs;
+
+namespace RougeLike.PlayerModule
 {
-	internal readonly struct PlayerTag { }
+	internal readonly struct PlayerTag : IEcsIgnoreInFilter { }
 }

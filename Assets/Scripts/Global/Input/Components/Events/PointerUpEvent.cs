@@ -1,4 +1,6 @@
-﻿namespace RougeLike.PlayerInput
+﻿using Leopotam.Ecs;
+
+namespace RougeLike.PlayerInput
 {
-	internal readonly struct PointerUpEvent { }
+	internal readonly struct PointerUpEvent : IEcsIgnoreInFilter { }
 }

@@ -1,4 +1,6 @@
-﻿namespace RougeLike
+﻿using Leopotam.Ecs;
+
+namespace RougeLike
 {
-	public struct GameTag { }
+	public struct GameTag : IEcsIgnoreInFilter { }
 }
