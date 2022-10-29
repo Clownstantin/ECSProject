@@ -14,10 +14,10 @@ namespace RougeLike.CameraModule
 			Camera mainCam = _cameraData.MainCam;
 
 			camera.Get<CameraTag>();
-			camera.Replace(new EntityTransform(mainCam.transform));
-			camera.Replace(new EntityLocalTransform(mainCam.transform));
-			camera.Replace(new ComponentLink<Transform>(mainCam.transform));
-			camera.Replace(new ComponentLink<Camera>(mainCam));
+			camera.Replace(new EntityTransform(mainCam.transform))
+			      .Replace(new EntityLocalTransform(mainCam.transform))
+			      .Replace(new ComponentLink<Transform>(mainCam.transform))
+			      .Replace(new ComponentLink<Camera>(mainCam));
 			camera.Get<ChangeTransformEvent>();
 			camera.Get<ChangeLocalTransformEvent>();
 		}

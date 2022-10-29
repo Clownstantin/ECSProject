@@ -10,13 +10,13 @@ namespace RougeLike.CameraModule
 		private EcsFilter<PlayerTag> _playerFilter = default;
 		private CameraData _cameraData = default;
 
-		private Vector3 _camVelocity = default;
+		[EcsIgnoreInject] private Vector3 _camVelocity = default;
 
 		public void Run()
 		{
 			if(_cameraFilter.IsEmpty() || _playerFilter.IsEmpty()) return;
 
-			float delta = Time.deltaTime;
+			float delta = Time.fixedDeltaTime;
 
 			EcsEntity camera = _cameraFilter.GetEntity(0);
 			EcsEntity player = _playerFilter.GetEntity(0);

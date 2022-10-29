@@ -2,7 +2,7 @@
 
 namespace RougeLike.PlayerModule
 {
-	internal class PlayerInitSystem : IEcsRunSystem
+	public class PlayerInitSystem : IEcsRunSystem
 	{
 		private EcsFilter<PlayerTag, SpawnEvent> _playerFilter = default;
 		private ConfigurationSettings _config = default;
@@ -13,8 +13,8 @@ namespace RougeLike.PlayerModule
 			PlayerSettings settings = _config.PlayerSettings;
 
 			EcsEntity player = _playerFilter.GetEntity(0);
-			player.Replace(new MoveSpeed(settings.MoveSpeed));
-			player.Replace(new RotationSpeed(settings.RotationSpeed));
+			player.Replace(new MoveSpeed(settings.MoveSpeed))
+			      .Replace(new RotationSpeed(settings.RotationSpeed));
 		}
 	}
 }

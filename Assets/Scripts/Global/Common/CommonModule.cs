@@ -4,6 +4,10 @@ namespace RougeLike
 {
 	public struct CommonModule : IEcsSystemModule
 	{
+		public void InjectData(EcsSystems system) { }
+
+		public void InjectDataToFixedUpdate(EcsSystems system) { }
+
 		public void AddPrioritySystem(EcsSystems system)
 		{
 			system.Add(new MoveToTargetSystem())
@@ -32,7 +36,5 @@ namespace RougeLike
 			      .OneFrame<DamageEvent>()
 			      .OneFrame<DestroyedEvent>();
 		}
-
-		public void InjectData(EcsSystems system) { }
 	}
 }
