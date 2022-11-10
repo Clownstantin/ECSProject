@@ -11,8 +11,8 @@ namespace RougeLike.CameraModule
 
 		public override void AddSystem(EcsSystems system)
 		{
-			system.Add(new CameraInitSystem())
-			      .Add(new CameraFollowSystem());
+			system.Add(new CameraCreateSystem())
+			      .Add(new CameraInitSystem());
 		}
 	}
 }

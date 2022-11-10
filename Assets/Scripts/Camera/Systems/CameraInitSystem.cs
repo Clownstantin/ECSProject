@@ -1,25 +1,24 @@
-﻿using Leopotam.Ecs;
+﻿using Cinemachine;
+using Leopotam.Ecs;
+using RougeLike.PlayerModule;
 using UnityEngine;
 
 namespace RougeLike.CameraModule
 {
-	public class CameraInitSystem : IEcsInitSystem
+	public class CameraInitSystem : IEcsRunSystem
 	{
-		private EcsWorld _world = default;
-		private CameraData _cameraData = default;
+		private EcsFilter<CameraTag, SpawnEvent> _camFilter = default;
+		private EcsFilter<PlayerTag> _playerFilter = default;
 
-		public void Init()
+		public void Run()
 		{
-			EcsEntity camera = _world.NewEntity();
-			Camera mainCam = _cameraData.MainCam;
+			if(_camFilter.IsEmpty() || _playerFilter.IsEmpty()) return;
 
-			camera.Get<CameraTag>();
-			camera.Replace(new EntityTransform(mainCam.transform))
-			      .Replace(new ComponentLink<Transform>(mainCam.transform))
-			      .Replace(new ComponentLink<Camera>(mainCam))
-			      .Replace(new Offset(_cameraData.OffsetFromPlayer))
-			      .Replace(new MoveSpeed(_cameraData.FollowSpeed));
-			camera.Get<ChangeTransformEvent>();
+			EcsEntity camera = _camFilter.GetEntity(0);
+			EcsEntity player = _playerFilter.GetEntity(0);
+
+			if(camera.TryGet(out ComponentLink<CinemachineVirtualCamera> virtualCam) &&
+			   player.TryGet(out ComponentLink<Transform> playerTransform)) virtualCam.value.Follow = playerTransform.value;
 		}
 	}
 }

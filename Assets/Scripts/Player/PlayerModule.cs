@@ -14,7 +14,6 @@ namespace RougeLike.PlayerModule
 			system.Add(new PlayerCreateSystem())
 			      .Add(new PlayerInitSystem())
 			      .Add(new PlayerMovementSystem())
-			      .Add(new PlayerRotationSystem())
 			      .Add(new PlayerAnimationSystem());
 		}
 	}

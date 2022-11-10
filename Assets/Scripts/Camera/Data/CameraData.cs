@@ -1,4 +1,5 @@
 ﻿using System;
+using Cinemachine;
 using UnityEngine;
 
 namespace RougeLike.CameraModule
@@ -6,12 +7,8 @@ namespace RougeLike.CameraModule
 	[Serializable]
 	public struct CameraData
 	{
-		[SerializeField] private Camera _mainCamera;
-		[SerializeField] private float _followSpeed;
-		[SerializeField] private Vector3 _offsetFromPlayer;
+		[SerializeField] private CinemachineVirtualCamera _followCam;
 
-		public Camera MainCam => _mainCamera;
-		public float FollowSpeed => _followSpeed;
-		public Vector3 OffsetFromPlayer => _offsetFromPlayer;
+		public CinemachineVirtualCamera FollowCam => _followCam;
 	}
 }
