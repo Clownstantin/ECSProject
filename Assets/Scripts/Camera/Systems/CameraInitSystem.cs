@@ -15,11 +15,11 @@ namespace RougeLike.CameraModule
 
 			camera.Get<CameraTag>();
 			camera.Replace(new EntityTransform(mainCam.transform))
-			      .Replace(new EntityLocalTransform(mainCam.transform))
 			      .Replace(new ComponentLink<Transform>(mainCam.transform))
-			      .Replace(new ComponentLink<Camera>(mainCam));
+			      .Replace(new ComponentLink<Camera>(mainCam))
+			      .Replace(new Offset(_cameraData.OffsetFromPlayer))
+			      .Replace(new MoveSpeed(_cameraData.FollowSpeed));
 			camera.Get<ChangeTransformEvent>();
-			camera.Get<ChangeLocalTransformEvent>();
 		}
 	}
 }

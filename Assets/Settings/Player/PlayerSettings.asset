@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   _moveSpeed: 10
-  _rotationSpeed: 4
+  _rotationSpeed: 500

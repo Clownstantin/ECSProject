@@ -16,7 +16,7 @@ namespace RougeLike.PlayerInput.Standalone
 			if(_inputFilter.GetEntitiesCount() < 1) return;
 
 			EcsEntity input = _inputFilter.GetEntity(0);
-			var moveInput = new Vector3(Input.GetAxis(Horizontal), 0, Input.GetAxis(Vertical));
+			var moveInput = new Vector3(Input.GetAxis(Horizontal), Input.GetAxis(Vertical));
 			input.Replace(new MoveInput(moveInput));
 		}
 	}
