@@ -12,12 +12,13 @@ namespace RougeLike.CameraModule
 		public void Init()
 		{
 			EcsEntity camera = _world.NewEntity();
-			CinemachineVirtualCamera mainCam = _cameraData.FollowCam;
+			CinemachineVirtualCamera followCam = _cameraData.FollowCam;
 
 			camera.Get<CameraTag>();
-			camera.Replace(new EntityTransform(mainCam.transform))
-			      .Replace(new ComponentLink<Transform>(mainCam.transform))
-			      .Replace(new ComponentLink<CinemachineVirtualCamera>(mainCam));
+			camera.Replace(new EntityTransform(followCam.transform))
+			      .Replace(new ComponentLink<Transform>(followCam.transform))
+			      .Replace(new ComponentLink<Camera>(_cameraData.MainCam))
+			      .Replace(new ComponentLink<CinemachineVirtualCamera>(followCam));
 			camera.Get<ChangeTransformEvent>();
 			camera.Get<SpawnEvent>();
 		}

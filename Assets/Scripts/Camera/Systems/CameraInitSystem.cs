@@ -17,8 +17,8 @@ namespace RougeLike.CameraModule
 			EcsEntity camera = _camFilter.GetEntity(0);
 			EcsEntity player = _playerFilter.GetEntity(0);
 
-			if(camera.TryGet(out ComponentLink<CinemachineVirtualCamera> virtualCam) &&
-			   player.TryGet(out ComponentLink<Transform> playerTransform)) virtualCam.value.Follow = playerTransform.value;
+			if(camera.TryGet(out ComponentLink<CinemachineVirtualCamera> virtualCam) && player.TryGet(out ComponentLink<Transform> playerTransform))
+				virtualCam.value.Follow = playerTransform.value;
 		}
 	}
 }
