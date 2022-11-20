@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowDebugText: 0
+  m_ShowDebugText: 1
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
@@ -827,6 +827,11 @@ MonoBehaviour:
   _gridData:
     _worldContainer: {fileID: 319519780}
     _grid: {fileID: 4790128757143946806, guid: 3abaf9604adb84d4bb353a543da3dbd2, type: 3}
-    _tile: {fileID: 11400000, guid: d41958dddd9ed424799b9e75731bf872, type: 2}
+    _floorTile: {fileID: 11400000, guid: 42711eaa65b95cb42b5dd5934a30a7b4, type: 2}
     _gridSize: {x: 10, y: 10}
     _cellSize: {x: 1, y: 1}
+  _proceduralData:
+    _startPosition: {x: 0, y: 0}
+    _iterations: 10
+    _walkLength: 15
+    _randomlyEachIteration: 1

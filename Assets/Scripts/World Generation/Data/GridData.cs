@@ -9,13 +9,13 @@ namespace RougeLike.WorldModule
 	{
 		[SerializeField] private Transform _worldContainer;
 		[SerializeField] private Grid _grid;
-		[SerializeField] private Tile _tile;
+		[SerializeField] private TileBase _floorTile;
 		[SerializeField] private Vector2Int _gridSize;
 		[SerializeField] private Vector2Int _cellSize;
 
 		public Transform WorldContainer => _worldContainer;
 		public Grid Grid => _grid;
-		public Tile Tile => _tile;
+		public TileBase FloorTile => _floorTile;
 		public Vector2Int GridSize => _gridSize;
 		public Vector2Int CellSize => _cellSize;
 	}

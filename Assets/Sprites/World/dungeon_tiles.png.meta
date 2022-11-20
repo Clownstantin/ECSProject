@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 3
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -5754,19 +5754,19 @@ TextureImporter:
       dungeon_tiles_181: 1868029022
       dungeon_tiles_161: 1505831645
       dungeon_tiles_30: -831680040
-      dungeon_tiles_5: -1816634178
-      dungeon_tiles_9: 941341130
-      dungeon_tiles_42: -1182921647
-      dungeon_tiles_17: -137516661
-      dungeon_tiles_236: -2000207268
-      dungeon_tiles_123: 1176698300
       dungeon_tiles_45: -742671932
+      dungeon_tiles_115: -794897005
+      dungeon_tiles_123: 1176698300
+      dungeon_tiles_5: -1816634178
+      dungeon_tiles_236: -2000207268
+      dungeon_tiles_155: 1262331850
+      dungeon_tiles_9: 941341130
       dungeon_tiles_121: -506770123
       dungeon_tiles_209: 1205315677
       dungeon_tiles_196: -685839121
       dungeon_tiles_177: 1920849489
-      dungeon_tiles_115: -794897005
-      dungeon_tiles_155: 1262331850
+      dungeon_tiles_17: -137516661
+      dungeon_tiles_42: -1182921647
       dungeon_tiles_77: 1821522928
       dungeon_tiles_26: 450078631
       dungeon_tiles_124: 1637145268
