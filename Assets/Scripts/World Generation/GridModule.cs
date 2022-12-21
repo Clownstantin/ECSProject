@@ -16,8 +16,6 @@ namespace RougeLike.WorldModule
 
 		public override void AddSystem(EcsSystems system)
 		{
-			system.Add(new CreateGridSystem())
-			      .Add(new GenerateGridSystem());
 		}
 	}
 }

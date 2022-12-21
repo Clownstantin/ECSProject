@@ -3,10 +3,12 @@ using UnityEngine;
 
 namespace RougeLike.UI
 {
-	public class UIModule<T> : MonoBehaviourEcsSystemModule
+	public class UIModule : MonoBehaviourEcsSystemModule
 	{
-		[SerializeField] private T _UIData = default;
+		[SerializeField] private UIData _UIData = default;
 
 		public override void InjectData(EcsSystems system) => system.Inject(_UIData);
+
+		public override void AddSystem(EcsSystems system) => system.Add(new CreateUISystem());
 	}
 }

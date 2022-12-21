@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace RougeLike.WorldModule
+namespace RougeLike
 {
 	[Serializable]
 	public struct ProceduralData
@@ -10,11 +10,11 @@ namespace RougeLike.WorldModule
 		[SerializeField] private Vector2Int _startPosition;
 		[SerializeField] private int _iterations;
 		[SerializeField] private int _walkLength;
-		[SerializeField] private bool _randomlyEachIteration;
+		[SerializeField] private bool _isRandomEachIteration;
 
 		public Vector2Int StartPosition => _startPosition;
 		public int Iterations => _iterations;
 		public int WalkLength => _walkLength;
-		public bool RandomlyEachIteration => _randomlyEachIteration;
+		public bool IsRandomEachIteration => _isRandomEachIteration;
 	}
 }
