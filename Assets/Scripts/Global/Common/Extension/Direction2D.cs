@@ -4,8 +4,10 @@ namespace RougeLike
 {
 	public static class Direction2D
 	{
-		private static Vector2Int[] s_Directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right, };
+		public static readonly Vector2Int[] Directions;
 
-		public static Vector2Int GetRandomDirection() => s_Directions[Random.Range(0, s_Directions.Length)];
+		static Direction2D() => Directions = new[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right, };
+
+		public static Vector2Int GetRandomDirection() => Directions[Random.Range(0, Directions.Length)];
 	}
 }

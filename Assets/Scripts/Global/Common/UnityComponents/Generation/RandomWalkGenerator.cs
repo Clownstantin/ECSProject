@@ -4,25 +4,30 @@ using UnityEngine;
 
 namespace RougeLike
 {
-	public class SimpleRandomWalkGenerator : DungeonGenerator
+	public class RandomWalkGenerator : DungeonGenerator
 	{
+		[SerializeField] private RandomWalkSettings _settings = default;
+		
 		protected override void RunProceduralGeneration()
 		{
 			HashSet<Vector2Int> floorPositions = RunRandomWalk();
+			IEnumerable<Vector2Int> wallPositions = WallGenerator.GetWallPositions(floorPositions);
+
 			visualizer.PaintFloorTiles(floorPositions);
+			visualizer.PaintWallTiles(wallPositions);
 		}
 
 		private HashSet<Vector2Int> RunRandomWalk()
 		{
-			Vector2Int currentPos = proceduralData.StartPosition;
+			Vector2Int currentPos = startPosition;
 			var floorPositions = new HashSet<Vector2Int>();
 
-			for(int i = 0; i < proceduralData.Iterations; i++)
+			for(int i = 0; i < _settings.Iterations; i++)
 			{
-				HashSet<Vector2Int> path = ProceduralGenerationAlgorithms.SimpleRandomWalk(currentPos, proceduralData.WalkLength);
+				IEnumerable<Vector2Int> path = ProceduralGenerationAlgorithms.SimpleRandomWalk(currentPos, _settings.WalkLength);
 				floorPositions.UnionWith(path);
 
-				if(proceduralData.IsRandomEachIteration)
+				if(_settings.IsRandomEachIteration)
 					currentPos = floorPositions.ElementAt(Random.Range(0, floorPositions.Count));
 			}
 			return floorPositions;

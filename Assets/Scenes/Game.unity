@@ -168,7 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _floorTilemap: {fileID: 1834179759}
+  _wallTilemap: {fileID: 1834179760}
   _floorTile: {fileID: 11400000, guid: 42711eaa65b95cb42b5dd5934a30a7b4, type: 2}
+  _wallTopTile: {fileID: 11400000, guid: e30bb4ec950b5fe469c7ae1efe193398, type: 2}
 --- !u!1 &83995064
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,12 +839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a5254cdb674ab3837c3b34e4302be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proceduralData:
-    _startPosition: {x: 0, y: 0}
-    _iterations: 10
-    _walkLength: 20
-    _isRandomEachIteration: 1
+  startPosition: {x: 0, y: 0}
   visualizer: {fileID: 30236009}
+  _settings: {fileID: 11400000, guid: 725fb857b8c441944bfd6fc8ab161a5d, type: 2}
 --- !u!1 &1400518440
 GameObject:
   m_ObjectHideFlags: 3
@@ -1028,11 +1027,6 @@ MonoBehaviour:
     _floorTile: {fileID: 11400000, guid: 42711eaa65b95cb42b5dd5934a30a7b4, type: 2}
     _gridSize: {x: 10, y: 10}
     _cellSize: {x: 1, y: 1}
-  _proceduralData:
-    _startPosition: {x: 0, y: 0}
-    _iterations: 100
-    _walkLength: 100
-    _isRandomEachIteration: 0
 --- !u!1001 &1834179756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1103,5 +1097,10 @@ Grid:
 --- !u!1839735485 &1834179759 stripped
 Tilemap:
   m_CorrespondingSourceObject: {fileID: 4790128756370401521, guid: 3abaf9604adb84d4bb353a543da3dbd2, type: 3}
+  m_PrefabInstance: {fileID: 1834179756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1839735485 &1834179760 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 6444199256049221480, guid: 3abaf9604adb84d4bb353a543da3dbd2, type: 3}
   m_PrefabInstance: {fileID: 1834179756}
   m_PrefabAsset: {fileID: 0}

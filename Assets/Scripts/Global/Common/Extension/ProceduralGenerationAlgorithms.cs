@@ -5,7 +5,7 @@ namespace RougeLike
 {
 	public static class ProceduralGenerationAlgorithms
 	{
-		public static HashSet<Vector2Int> SimpleRandomWalk(Vector2Int startPosition, int walkLength)
+		public static IEnumerable<Vector2Int> SimpleRandomWalk(Vector2Int startPosition, int walkLength)
 		{
 			var path = new HashSet<Vector2Int> { startPosition };
 			Vector2Int prevPos = startPosition;
@@ -16,7 +16,6 @@ namespace RougeLike
 				path.Add(newPos);
 				prevPos = newPos;
 			}
-
 			return path;
 		}
 	}

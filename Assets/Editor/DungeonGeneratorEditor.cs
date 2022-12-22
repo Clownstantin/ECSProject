@@ -15,6 +15,7 @@ namespace RougeLike.Dev
 		{
 			base.OnInspectorGUI();
 			if(GUILayout.Button("Generate")) _generator.GenerateDungeon();
+			if(GUILayout.Button("Clear")) _generator.ClearDungeon();
 		}
 	}
 }

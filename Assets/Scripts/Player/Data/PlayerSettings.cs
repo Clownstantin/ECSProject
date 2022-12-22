@@ -2,7 +2,7 @@
 
 namespace RougeLike.PlayerModule
 {
-	[CreateAssetMenu(menuName = "Settings/Player", fileName = "PlayerSettings", order = 51)]
+	[CreateAssetMenu(menuName = "Settings/PlayerData", fileName = "PlayerSettings", order = 50)]
 	public class PlayerSettings : ScriptableObject
 	{
 		[Header("Stats")]
