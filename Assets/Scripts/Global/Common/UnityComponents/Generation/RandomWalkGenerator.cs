@@ -6,28 +6,28 @@ namespace RougeLike
 {
 	public class RandomWalkGenerator : DungeonGenerator
 	{
-		[SerializeField] private RandomWalkSettings _settings = default;
+		[SerializeField] protected RandomWalkSettings generationSettings = default;
 		
 		protected override void RunProceduralGeneration()
 		{
-			HashSet<Vector2Int> floorPositions = RunRandomWalk();
-			IEnumerable<Vector2Int> wallPositions = WallGenerator.GetWallPositions(floorPositions);
+			HashSet<Vector2Int> floorPositions = RunRandomWalk(startPosition);
+			IEnumerable<Vector2Int> wallPositions = WallGenerator.GetGeneratedWallPositions(floorPositions);
 
 			visualizer.PaintFloorTiles(floorPositions);
 			visualizer.PaintWallTiles(wallPositions);
 		}
 
-		private HashSet<Vector2Int> RunRandomWalk()
+		protected HashSet<Vector2Int> RunRandomWalk(Vector2Int position)
 		{
-			Vector2Int currentPos = startPosition;
+			Vector2Int currentPos = position;
 			var floorPositions = new HashSet<Vector2Int>();
 
-			for(int i = 0; i < _settings.Iterations; i++)
+			for(int i = 0; i < generationSettings.Iterations; i++)
 			{
-				IEnumerable<Vector2Int> path = ProceduralGenerationAlgorithms.SimpleRandomWalk(currentPos, _settings.WalkLength);
+				IEnumerable<Vector2Int> path = ProceduralGenerationAlgorithms.SimpleRandomWalk(currentPos, generationSettings.WalkLength);
 				floorPositions.UnionWith(path);
 
-				if(_settings.IsRandomEachIteration)
+				if(generationSettings.IsRandomEachIteration)
 					currentPos = floorPositions.ElementAt(Random.Range(0, floorPositions.Count));
 			}
 			return floorPositions;

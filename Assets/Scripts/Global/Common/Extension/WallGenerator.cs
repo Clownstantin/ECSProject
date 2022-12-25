@@ -5,7 +5,7 @@ namespace RougeLike
 {
 	public static class WallGenerator
 	{
-		public static IEnumerable<Vector2Int> GetWallPositions(HashSet<Vector2Int> floorPositions)
+		public static IEnumerable<Vector2Int> GetGeneratedWallPositions(HashSet<Vector2Int> floorPositions)
 		{
 			var wallPositions = new HashSet<Vector2Int>();
 			foreach(Vector2Int pos in floorPositions)
